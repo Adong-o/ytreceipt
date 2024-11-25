@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YT Receipt - X - @AdongoJakes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="image/x-icon" href="./icon.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Youtube Receipt</h1>
+        <!-- Light/Dark mode toggle -->
+        <label class="switch">
+            <input type="checkbox" id="modeSwitch">
+            <span class="slider"></span>
+        </label>
+    </div>
+    
+    <h2>Generate a receipt based on a YouTube channel link or name</h2>
+    
+    <div class="footer">
+        <p>Made by <a href="x.com/AdongoJakes"> Adongo </a> | <a href="https://www.paypal.com/ncp/payment/QSUVZXRDH46ZJ" target="_blank">Appreciated Support</a></p>
+    </div>
+
+    <div>
+        <input type="text" id="channelInput" placeholder="Enter YouTube channel link or name">
+        <button id="generateButton">Generate</button>
+    </div>
+
+    <div class="loading" id="loading">Loading channel data...</div>
+    <div class="error-message" id="errorMessage"></div>
+    
+    <div class="receipt-container" id="receipt">
+        <div class="receipt-header">
+            <h3>YOUTUBE CHANNEL RECEIPT</h3>
+            <p id="fullDate"></p>
+        </div>
+        
+        <div id="receiptContent">
+            <!-- Receipt items will be added here -->
+        </div>
+
+        <div class="coupon-code">
+            <div class="coupon-label">YOUR COUPON CODE</div>
+            <div id="couponCode"></div>
+        </div>
+        
+        <div class="served-by">Served by Adongo Jakes</div>
+        <div class="generation-time" id="generationTime"></div>
+        
+        <div class="barcode">
+            <svg id="barcode"></svg>
+        </div>
+        
+        <div class="receipt-footer">
+            <p>Thank you for using YT Receipt!</p>
+            <p>Receipt ID: <span id="receiptId"></span></p>
+            
+        </div>
+    </div>
+
+    <div class="buttons-container">
+        <button class="download-btn" onclick="downloadReceipt()">Download Receipt</button>
+        <button class="share-btn" onclick="shareReceipt()">Share Receipt</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

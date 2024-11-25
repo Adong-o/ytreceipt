@@ -1,0 +1,274 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background-color: #f4f4f4; 
+    color: #000; 
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    margin: 0; 
+    font-size: 2.5em; 
+}
+
+h2 {
+    font-family: 'Lobster', cursive;
+    margin: 0; 
+    font-size: 1.5em; 
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 20px; 
+}
+
+
+.header h1 {
+    flex-grow: 1; 
+    text-align: center; 
+}
+
+
+div {
+    margin-top: 20px;
+}
+
+
+input[type="text"] {
+    padding: 10px;
+    width: 300px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+button:hover {
+    background-color: #218838;
+}
+
+
+@media (max-width: 600px) {
+    input[type="text"] {
+        width: 100%; 
+    }
+
+    button {
+        width: 100%; 
+        margin-left: 0; 
+        margin-top: 10px; 
+    }
+}
+
+
+body.dark-mode {
+    background-color: #333; 
+    color: #fff; 
+}
+
+body.dark-mode input[type="text"] {
+    background-color: #555; 
+    color: #f4f4f4; 
+    border: 1px solid #777; 
+}
+
+body.dark-mode button {
+    background-color: #1e7e34; 
+}
+
+body.dark-mode button:hover {
+    background-color: #155724; 
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0; 
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; 
+    transition: .4s;
+    border-radius: 34px; 
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white; 
+    transition: .4s;
+    border-radius: 50%; 
+}
+
+
+input:checked + .slider {
+    background-color: #2196F3; /* Dark mode switch background */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px); /* Move knob to the right */
+}
+
+/* Footer styles */
+.footer {
+    margin: 20px 0; /* Space above and below the footer */
+}
+
+.footer p {
+    margin: 0; /* Remove default margin */
+}
+
+.footer a {
+    color: #2196F3; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+
+
+/*receipt*/
+.receipt-container {
+    max-width: 400px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-family: 'Courier New', monospace;
+    display: none;
+}
+
+.receipt-header {
+    text-align: center;
+    border-bottom: 2px dashed #000;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.receipt-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.receipt-item span:first-child {
+    margin-right: 10px;
+}
+
+.receipt-item span:last-child {
+    text-align: right;
+    max-width: 50%;
+}
+
+.receipt-footer {
+    border-top: 2px dashed #000;
+    margin-top: 15px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.barcode {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.download-btn, .share-btn {
+    padding: 10px 20px;
+    margin: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.share-btn {
+    background: #007bff;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin: 10px 0;
+    display: none;
+}
+
+.buttons-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.served-by {
+    text-align: center;
+    color: #999;
+    margin: 15px 0 5px 0;
+    font-style: italic;
+}
+
+.generation-time {
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.coupon-code {
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    border: 2px dashed #000;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.coupon-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.loading {
+    text-align: center;
+    margin: 20px 0;
+    display: none;
+}
+
+body.dark-mode .receipt-container {
+    background: #fff;
+    color: #000;
+}
