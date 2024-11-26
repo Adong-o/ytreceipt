@@ -19,7 +19,6 @@ modeSwitch.addEventListener('change', () => {
 
   const API_KEY = 'AIzaSyCg6f38_RPUR9uOvnfUsybjqxuVuV1yBx0';
 
-// Utility Functions
 function formatNumber(num) {
     if (num >= 1000000000) return (num / 1000000000).toFixed(1) + 'B';
     if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
@@ -48,7 +47,6 @@ function formatTime(date) {
     });
 }
 
-// Channel ID Fetching
 async function fetchChannelId(input) {
     try {
         if (input.includes('channel/')) {
@@ -69,7 +67,6 @@ async function fetchChannelId(input) {
     }
 }
 
-// Shorts Count
 async function fetchShortsCount(channelId) {
     let shortsCount = 0;
     let nextPageToken = null;
@@ -101,7 +98,6 @@ async function fetchShortsCount(channelId) {
     return shortsCount;
 }
 
-// Community Posts
 async function fetchCommunityPosts(channelId) {
     try {
         const searchUrl = `https://www.googleapis.com/youtube/v3/activities?part=snippet&channelId=${channelId}&maxResults=50&key=${API_KEY}`;
@@ -115,7 +111,6 @@ async function fetchCommunityPosts(channelId) {
     }
 }
 
-// Upload Frequency
 async function calculateUploadFrequency(channelId) {
     try {
         const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=50&type=video&order=date&key=${API_KEY}`;
@@ -136,7 +131,6 @@ async function calculateUploadFrequency(channelId) {
     }
 }
 
-// Subscriber Milestones
 async function fetchSubscriberMilestones(channelId) {
     try {
         const historicalDataUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&id=${channelId}&key=${API_KEY}`;
@@ -166,7 +160,6 @@ async function fetchSubscriberMilestones(channelId) {
     }
 }
 
-// Main Channel Data Fetching
 async function fetchChannelData(channelId) {
     try {
         const channelUrl = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${API_KEY}`;
@@ -196,7 +189,6 @@ async function fetchChannelData(channelId) {
     }
 }
 
-// UI Management Functions
 function showLoading() {
     document.getElementById('loading').style.display = 'block';
     document.querySelector('.receipt-container').style.display = 'none';
@@ -233,11 +225,11 @@ function generateReceipt(data) {
 
     const channel = data.channelInfo;
     const items = [
-        ['Channel Name', channel.snippet.title],
+        ['Customer Name', channel.snippet.title],
         ['Subscribers', formatNumber(channel.statistics.subscriberCount)],
         ['Total Videos', formatNumber(channel.statistics.videoCount)],
         ['Total Views', formatNumber(channel.statistics.viewCount)],
-        ['Number of Shorts', formatNumber(data.shortsCount)],
+        ['Shorts', formatNumber(data.shortsCount)],
         ['Community Posts', formatNumber(data.communityPosts)],
         ['Upload Frequency', data.uploadFrequency],
         ['1K Milestone', data.milestones.milestone1K],
@@ -257,11 +249,9 @@ function generateReceipt(data) {
         content.appendChild(div);
     });
 
-    // Generate coupon code
     const couponCode = `YT-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
     document.getElementById('couponCode').textContent = couponCode;
 
-    // Generate barcode
     JsBarcode("#barcode", receiptId, {
         format: "CODE128",
         width: 2,
@@ -272,7 +262,6 @@ function generateReceipt(data) {
     showReceipt();
 }
 
-// Event Handlers
 async function handleGeneration() {
     const channelInput = document.getElementById('channelInput').value;
     if (!channelInput) {
@@ -294,7 +283,6 @@ async function handleGeneration() {
     }
 }
 
-// Download and Share Functions
 function downloadReceipt() {
     html2canvas(document.querySelector('.receipt-container')).then(canvas => {
         const link = document.createElement('a');
@@ -327,14 +315,11 @@ async function shareReceipt() {
     }
 }
 
-// Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    // Hide buttons and receipt initially
     document.querySelector('.buttons-container').style.display = 'none';
     document.querySelector('.receipt-container').style.display = 'none';
     document.getElementById('loading').style.display = 'none';
     
-    // Add event listeners
     document.getElementById('channelInput').addEventListener('keypress', async (e) => {
         if (e.key === 'Enter') {
             await handleGeneration();
