@@ -98,6 +98,7 @@ async function fetchShortsCount(channelId) {
     return shortsCount;
 }
 
+//function to be deleted.
 async function fetchCommunityPosts(channelId) {
     try {
         const searchUrl = `https://www.googleapis.com/youtube/v3/activities?part=snippet&channelId=${channelId}&maxResults=50&key=${API_KEY}`;
@@ -230,7 +231,8 @@ function generateReceipt(data) {
         ['Total Videos', formatNumber(channel.statistics.videoCount)],
         ['Total Views', formatNumber(channel.statistics.viewCount)],
         ['Shorts', formatNumber(data.shortsCount)],
-        ['Community Posts', formatNumber(data.communityPosts)],
+        //out coz i cant find how to add community count from the api neither does google, ai or the rest.
+        //['Community Posts', formatNumber(data.communityPosts)],
         ['Upload Frequency', data.uploadFrequency],
         ['1K Milestone', data.milestones.milestone1K],
         ['100K Milestone', data.milestones.milestone100K],
@@ -276,7 +278,7 @@ async function handleGeneration() {
         const channelData = await fetchChannelData(channelId);
         generateReceipt(channelData);
     } catch (error) {
-        showError('Error fetching channel data. Please try again.');
+        showError('We dont run into this issues. Check spelling and try again later.');
         console.error(error);
     } finally {
         hideLoading();
