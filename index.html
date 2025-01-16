@@ -25,6 +25,17 @@
 </head>
 <body>
 
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-countdown">3</div>
+            <div class="loading-message">
+                <div class="loading-text">Analyzing Channel Data...</div>
+                <div class="loading-subtext">Preparing your YouTube receipt</div>
+            </div>
+        </div>
+    </div>
+
     <div class="header">
         <h1>Youtube Receipt</h1>
         <label class="switch">
@@ -34,33 +45,54 @@
     </div>
     
     <h2>Generate a receipt based on a YouTube channel link or name</h2>
+    
+    <div class="creator-info">
+        <div class="creator-badge">
+            <a href="https://x.com/AdongoJakes" target="_blank" class="creator-link">
+                <span class="creator-label">Created by</span>
+                <span class="creator-name">Adongo</span>
+            </a>
+            <a href="https://www.paypal.com/ncp/payment/QSUVZXRDH46ZJ" target="_blank" class="support-link">
+                <span class="support-icon">💝</span>
+                <span class="support-text">Support Project</span>
+            </a>
+        </div>
+    </div>
 
     <div class="input-section">
         <input type="text" id="channelInput" placeholder="Enter YouTube channel link or name">
         <button id="generateButton">Generate Receipt</button>
+        <div class="loading" id="loading">Hold on for the receipt...</div>
+        <div class="error-message" id="errorMessage"></div>
     </div>
 
     <div class="hero-section">
         <div class="description-box">
-            <h3>What is YouTube Receipt?</h3>
-            <p>YouTube Receipt is a free tool that generates detailed analytics receipts for any YouTube channel. Simply enter a channel URL or name to get:</p>
+            <h3>Generate Your YouTube Channel Receipt</h3>
+            <p>Transform your YouTube channel stats into a beautifully designed receipt! Whether you're a content creator, analyst, or curious viewer, get a detailed breakdown of any YouTube channel's performance metrics:</p>
             <ul>
-                <li>📊 Subscriber count and total views</li>
-                <li>🎥 Video statistics including Shorts</li>
-                <li>📈 Upload frequency analysis</li>
-                <li>🏆 Milestone achievements (1K, 100K)</li>
-                <li>📅 Channel age and growth metrics</li>
+                <li>📈 Channel Growth Stats
+                    <span class="feature-detail">Subscriber count, total views, and engagement rates</span>
+                </li>
+                <li>🎥 Content Analysis
+                    <span class="feature-detail">Video count, Shorts statistics, and upload frequency</span>
+                </li>
+                <li>⚡ Performance Metrics
+                    <span class="feature-detail">Average views per video, viewer-subscriber ratio</span>
+                </li>
+                <li>📊 Channel Analytics
+                    <span class="feature-detail">Daily growth, engagement rates, and creator tier</span>
+                </li>
+                <li>🌟 Special Achievements
+                    <span class="feature-detail">Milestone highlights and channel performance badges</span>
+                </li>
             </ul>
-            <p>Perfect for creators, analysts, and anyone interested in YouTube channel statistics!</p>
+            <div class="description-footer">
+                <p>✨ Get your shareable YouTube channel receipt in seconds!</p>
+                <p class="description-note">Perfect for creators tracking growth, viewers checking channels, or anyone curious about YouTube statistics</p>
+            </div>
         </div>
     </div>
-
-    <div class="footer">
-        <p>Made by <a href="https://x.com/AdongoJakes" target="blank"> Adongo </a> | <a href="https://www.paypal.com/ncp/payment/QSUVZXRDH46ZJ" target="_blank">Appreciated Support</a></p>
-    </div>
-
-    <div class="loading" id="loading">Hold on for the receipt...</div>
-    <div class="error-message" id="errorMessage"></div>
     
     <div class="receipt-container" id="receipt">
         <div class="receipt-header">
@@ -96,6 +128,9 @@
         <button class="generate-another-btn" onclick="generateAnother()">Generate Another</button>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
