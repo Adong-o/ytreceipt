@@ -20,6 +20,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <meta name="description" content="Generate a detailed receipt for any YouTube channel. Get insights about subscribers, views, upload frequency, and milestones in a beautifully formatted receipt.">
+    <meta name="keywords" content="YouTube receipt generator, YouTube channel analytics, YouTube statistics, YouTube channel receipt, YouTube metrics">
 </head>
 <body>
 
@@ -32,14 +34,29 @@
     </div>
     
     <h2>Generate a receipt based on a YouTube channel link or name</h2>
-    
-    <div class="footer">
-        <p>Made by <a href="https://x.com/AdongoJakes" target="blank"> Adongo </a> | <a href="https://www.paypal.com/ncp/payment/QSUVZXRDH46ZJ" target="_blank">Appreciated Support</a></p>
+
+    <div class="input-section">
+        <input type="text" id="channelInput" placeholder="Enter YouTube channel link or name">
+        <button id="generateButton">Generate Receipt</button>
     </div>
 
-    <div>
-        <input type="text" id="channelInput" placeholder="Enter YouTube channel link or name">
-        <button id="generateButton">Generate</button>
+    <div class="hero-section">
+        <div class="description-box">
+            <h3>What is YouTube Receipt?</h3>
+            <p>YouTube Receipt is a free tool that generates detailed analytics receipts for any YouTube channel. Simply enter a channel URL or name to get:</p>
+            <ul>
+                <li>📊 Subscriber count and total views</li>
+                <li>🎥 Video statistics including Shorts</li>
+                <li>📈 Upload frequency analysis</li>
+                <li>🏆 Milestone achievements (1K, 100K)</li>
+                <li>📅 Channel age and growth metrics</li>
+            </ul>
+            <p>Perfect for creators, analysts, and anyone interested in YouTube channel statistics!</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Made by <a href="https://x.com/AdongoJakes" target="blank"> Adongo </a> | <a href="https://www.paypal.com/ncp/payment/QSUVZXRDH46ZJ" target="_blank">Appreciated Support</a></p>
     </div>
 
     <div class="loading" id="loading">Hold on for the receipt...</div>
@@ -76,6 +93,7 @@
     <div class="buttons-container">
         <button class="download-btn" onclick="downloadReceipt()">Download Receipt</button>
         <button class="share-btn" onclick="shareReceipt()">Share Receipt</button>
+        <button class="generate-another-btn" onclick="generateAnother()">Generate Another</button>
     </div>
 
     <script src="script.js"></script>

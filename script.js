@@ -1,4 +1,3 @@
-
 const modeSwitch = document.getElementById('modeSwitch');
 
 if (localStorage.getItem('theme') === 'dark') {
@@ -208,8 +207,27 @@ function showError(message) {
 }
 
 function showReceipt() {
+    // Hide other elements
+    document.querySelector('.hero-section').style.display = 'none';
+    document.querySelector('h2').style.display = 'none';
+    document.querySelector('.input-section').style.display = 'none';
+    document.querySelector('.footer').style.display = 'none';
+
+    // Show receipt and buttons
     document.querySelector('.receipt-container').style.display = 'block';
     document.querySelector('.buttons-container').style.display = 'block';
+}
+
+function resetView() {
+    // Show other elements
+    document.querySelector('.hero-section').style.display = 'block';
+    document.querySelector('h2').style.display = 'block';
+    document.querySelector('.input-section').style.display = 'block';
+    document.querySelector('.footer').style.display = 'block';
+
+    // Hide receipt and buttons
+    document.querySelector('.receipt-container').style.display = 'none';
+    document.querySelector('.buttons-container').style.display = 'none';
 }
 
 // Receipt Generation
@@ -315,6 +333,30 @@ async function shareReceipt() {
         console.error('Error sharing:', error);
         alert('Error sharing the receipt');
     }
+}
+
+function generateAnother() {
+    // Add fade-out effect
+    document.querySelector('.receipt-container').classList.add('fade-out');
+    document.querySelector('.buttons-container').classList.add('fade-out');
+    
+    // Wait for fade-out to complete
+    setTimeout(() => {
+        // Reset the input field
+        document.getElementById('channelInput').value = '';
+        
+        // Reset any error messages
+        document.getElementById('errorMessage').style.display = 'none';
+        
+        // Show the original view with fade-in
+        resetView();
+        
+        // Add fade-in effect to main page elements
+        document.querySelector('.hero-section').classList.add('fade-in');
+        document.querySelector('h2').classList.add('fade-in');
+        document.querySelector('.input-section').classList.add('fade-in');
+        document.querySelector('.footer').classList.add('fade-in');
+    }, 300); // Match this with the CSS transition duration
 }
 
 document.addEventListener('DOMContentLoaded', function() {
