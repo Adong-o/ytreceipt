@@ -145,7 +145,7 @@ async function fetchShortsCount(channelId) {
     }
 }
 
-//function to be deleted.
+
 async function fetchCommunityPosts(channelId) {
     try {
         const searchUrl = `https://www.googleapis.com/youtube/v3/activities?part=snippet&channelId=${channelId}&maxResults=50&key=${API_KEY}`;
